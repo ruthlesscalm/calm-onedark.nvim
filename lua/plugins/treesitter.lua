@@ -21,7 +21,7 @@ return {
   config = function()
     -- There is a known issue where we must require the compiler before setup
     -- in some edge cases, but standard requiring is usually fine.
-    local configs = require("nvim-treesitter.configs")
+    local configs = require("nvim-treesitter")
 
     configs.setup({
       -- 1. PARSERS TO INSTALL (The Starter Pack)
