@@ -7,7 +7,7 @@
 ![License](https://img.shields.io/badge/License-MIT-success.svg?style=flat-square)
 
 ## Preview
-<img width="1920" height="1080" alt="Screenshot_2026-01-07_21_04_45" src="https://github.com/user-attachments/assets/2e6c0a36-6e54-466a-b6af-4c62f1a82063" />
+<img width="1920" height="1080" alt="Screenshot_2026-01-07_21_09_14" src="https://github.com/user-attachments/assets/529dfdc0-e3fc-419b-9791-8a72a1e80f11" />
 
 
 ## ✨ Features
