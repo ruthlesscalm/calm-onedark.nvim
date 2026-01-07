@@ -6,6 +6,10 @@
 ![Neovim Version](https://img.shields.io/badge/Neovim-0.9%2B-blueviolet.svg?style=flat-square)
 ![License](https://img.shields.io/badge/License-MIT-success.svg?style=flat-square)
 
+## Preview
+<img width="1920" height="1080" alt="Screenshot_2026-01-07_21_04_45" src="https://github.com/user-attachments/assets/2e6c0a36-6e54-466a-b6af-4c62f1a82063" />
+
+
 ## ✨ Features
 * **Theme:** One Dark Pro with custom **Peach (#e3a193)** accents.
 * **Soft Mode:** Text contrast is tuned to "Milk White" to prevent eye strain during long sessions.
