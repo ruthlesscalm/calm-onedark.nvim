@@ -1,74 +1,188 @@
-# 🧛 calm-onedark.nvim
+# 🧛 personal nvim config
 
-> A calm, low-strain adaptation of the One dark theme for Neovim.
-> Built for focus with soft accents, rounded UI, and instant startup time.
+This is my **personal Neovim configuration**.
 
-![Neovim Version](https://img.shields.io/badge/Neovim-0.9%2B-blueviolet.svg?style=flat-square)
-![License](https://img.shields.io/badge/License-MIT-success.svg?style=flat-square)
+I built this while daily-driving Neovim and slowly tuning things to feel
+**calm, low-strain, and distraction-free**.  
+It’s not a framework, not a starter kit, and not meant to fit everyone.
 
-## Preview
-<img width="1920" height="1080" alt="Screenshot_2026-01-07_21_09_14" src="https://github.com/user-attachments/assets/529dfdc0-e3fc-419b-9791-8a72a1e80f11" />
+If something here helps you, feel free to copy it.  
+If not, that’s totally fine 🙂
+
+---
+
+## ✨ What this config is about
+
+- One Dark–based colors, softened for long coding sessions
+- Minimal UI with rounded popups and clean borders
+- Non-intrusive notifications and messages
+- Fast navigation and sane defaults
+- Plugins split cleanly (one file per plugin)
+
+This is a **daily-driver setup**, not a “look how many plugins I use” repo.
+
+---
+
+## 📸 Preview
+
+UI changes over time as I tweak things.
+
+![preview](https://github.com/user-attachments/assets/529dfdc0-e3fc-419b-9791-8a72a1e80f11)
+
+---
+
+## 🗂️ Structure
+
+High-level layout:
+
+```
+lua/
+├── config/        -- core options, keybindings, lazy bootstrap
+└── plugins/       -- each plugin in its own file
+```
+
+I prefer keeping things explicit and easy to delete later.
+
+---
+
+## 📦 Plugins
+
+This config includes things like:
+
+- LSP + completion
+- Telescope for fuzzy finding
+- Treesitter for syntax highlighting
+- Git integration
+- Formatter & diagnostics
+- UI polish (notifications, statusline, popups)
+- Terminal integration
+
+Nothing exotic — just well-tuned essentials.
+
+---
+
+## 🛠 Requirements
+
+This config assumes a fairly standard dev setup.  
+Most things are optional, but you’ll have a better experience with these installed.
+
+### Required
+- **Neovim** `0.9+`
+- **git**
+- **Node.js** (for LSPs, formatters, Copilot, etc.)
+- **npm** (comes with Node)
+- **ripgrep** (`rg`) – Telescope live grep
+- **fd** – fast file finder used by Telescope
+
+> On Debian/Ubuntu, `fd` is installed as `fdfind`.  
+> You should symlink it to `fd`.
+
+---
+
+### 📦 Install (Debian / Ubuntu)
+
+```bash
+sudo apt update
+sudo apt install -y \
+  neovim \
+  git \
+  ripgrep \
+  fd-find \
+  nodejs \
+  npm
+```
+
+Fix the `fd` binary name:
+
+```bash
+ln -s $(which fdfind) ~/.local/bin/fd
+```
+
+Make sure `~/.local/bin` is in your PATH:
+
+```bash
+echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc
+source ~/.bashrc
+```
+
+---
+
+### 📦 Install (Arch)
+
+```bash
+sudo pacman -S --needed \
+  neovim \
+  git \
+  ripgrep \
+  fd \
+  nodejs \
+  npm
+```
+
+---
+
+### 📦 Install (macOS – Homebrew)
+
+```bash
+brew install \
+  neovim \
+  git \
+  ripgrep \
+  fd \
+  node \
+  npm
+```
+
+---
+
+If something doesn’t work, it’s usually:
+- missing `node`
+- missing `ripgrep`
+- or `fd` not being in PATH
 
 
-## ✨ Features
-* **Theme:** One Dark Pro with custom **Peach (#e3a193)** accents.
-* **Soft Mode:** Text contrast is tuned to "Milk White" to prevent eye strain during long sessions.
-* **Pro UI:** Distinct suggestion menu with highlighted matches and rounded borders.
-* **Workflow:** Integrated Git (Fugitive), Undo History (Undotree), and File Tree.
-* **Notifications:** Clean, non-intrusive popups that match the theme.
+---
 
-## 🛠️ Prerequisites
-Before installing, ensure you have the following installed on your system:
-1.  **[Neovim](https://github.com/neovim/neovim/wiki/Installing-Neovim)** (v0.9.0 or newer)
-2.  **[Ripgrep](https://github.com/BurntSushi/ripgrep)** - *Required for Telescope live grep.*
-3.  **GCC / Clang** - *Required for compiling Treesitter parsers.*
+## 🚀 Trying it out
 
-## 🚀 Installation
+If you want to test it:
 
-### 1. Backup your current config
 ```bash
 mv ~/.config/nvim ~/.config/nvim.bak
-```
-### 2. Clone the repository
-```bash
 git clone https://github.com/ruthlesscalm/calm-onedark.nvim ~/.config/nvim
-```
-### 3. Start Neovim
-Open nvim. The Lazy package manager will automatically bootstrap and install all plugins.
-```bash
 nvim
 ```
+
+Lazy.nvim will bootstrap and install plugins automatically.
+
+---
+
 ## ⌨️ Keybindings
 
-To keep this documentation clean, I have not listed every shortcut here. You can view all custom keybindings directly in the configuration file:
+Keymaps are intentionally **not listed here**.
 
-Open Neovim and run:
+You can see them directly in Neovim:
+
 ```vim
 :e lua/config/keybinds.lua
 ```
-## 📦 Plugin List
 
-This configuration relies on these awesome community plugins:
+Feel free to steal whatever feels useful.
 
-| Core | UI & Themes | LSP & Completion |
-| :--- | :--- | :--- |
-| [lazy.nvim](https://github.com/folke/lazy.nvim) | [onedarkpro.nvim](https://github.com/olimorris/onedarkpro.nvim) | [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig) |
-| [plenary.nvim](https://github.com/nvim-lua/plenary.nvim) | [lualine.nvim](https://github.com/nvim-lualine/lualine.nvim) | [nvim-cmp](https://github.com/hrsh7th/nvim-cmp) |
-| [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim) | [nvim-tree.lua](https://github.com/nvim-tree/nvim-tree.lua) | [LuaSnip](https://github.com/L3MON4D3/LuaSnip) |
-| [harpoon](https://github.com/ThePrimeagen/harpoon) | [nvim-notify](https://github.com/rcarriga/nvim-notify) | [mason.nvim](https://github.com/williamboman/mason.nvim) |
-| [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter) | [mini.icons](https://github.com/echasnovski/mini.icons) | [fidget.nvim](https://github.com/j-hui/fidget.nvim) |
-| [vim-fugitive](https://github.com/tpope/vim-fugitive) | [nvim-highlight-colors](https://github.com/brenoprata10/nvim-highlight-colors) | [nvim-autopairs](https://github.com/windwp/nvim-autopairs) |
-| [undotree](https://github.com/mbbill/undotree) | | |
+---
 
-## 👤 Author
+## ❗ Notes
 
-- Github - [Ruthless Calm](https://github.com/ruthlesscalm)
+This repo is **not finished and never will be**.  
+It changes as my workflow changes.
 
-## 🤝 Contributing
+If you’re:
+- learning Neovim
+- building your own config
+- curious how others structure things
 
-Pull req are welcome. For major changes, open an issue first.
+…this might be useful.
 
-## 📄 License
+---
 
-This project is licensed under the [MIT License](./LICENSE).  
-You're free to use, modify, distribute and credit is appreciated.
+Happy hacking 🦇
